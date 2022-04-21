@@ -7,6 +7,7 @@ import {AppComponent} from "./app.component";
 import {HomeComponent} from "./components/home/home.component";
 import {NavigationComponent} from "./components/navigation/navigation.component";
 import {NewRegistrationComponent} from "./components/new-registration/new-registration.component";
+import { BirthYearValidatorDirective } from './directives/birth-year-validator.directive';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {NewRegistrationComponent} from "./components/new-registration/new-regist
     HomeComponent,
     NavigationComponent,
     NewRegistrationComponent,
+    BirthYearValidatorDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

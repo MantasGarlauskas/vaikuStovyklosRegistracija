@@ -33,18 +33,17 @@
       <div class="mb-3">
         <label for="" class="form-label">Vaiko gimimo metai</label>
         <input
-          type="number"
+          type="text"
           id=""
           class="form-control"
           ngModel
           name="year"
           required
-          min="2010"
-          max="2014"
           #year="ngModel"
+          BirthYearValidator
         />
         <span class="help-block" *ngIf="!year.valid && year.touched"
-          >Vaiko amžius nuo 8 iki 18 metų</span
+          >Vaiko amžius nuo 12 iki 18 metų</span
         >
       </div>
       <div class="mb-3">
