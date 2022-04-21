@@ -56,6 +56,7 @@
             name="gender"
             id="flexRadioDefault1"
             value="male"
+            required
             ngModel
           />
           <label class="form-check-label" for="flexRadioDefault1">
@@ -69,6 +70,7 @@
             name="gender"
             id="flexRadioDefault2"
             value="female"
+            required
             ngModel
           />
           <label class="form-check-label" for="flexRadioDefault2">
@@ -99,6 +101,7 @@
           required
           minlength="10"
           maxlength="12"
+          placeholder="+3700000000"
         />
       </div>
       <div class="mb-3">
@@ -108,8 +111,8 @@
           aria-label="Default select example"
           ngModel
           name="class"
+          required
         >
-          <option selected>Pasirinkite klasę</option>
           <option value="5">Penkta</option>
           <option value="6">Šešta</option>
           <option value="7">Septinta</option>
