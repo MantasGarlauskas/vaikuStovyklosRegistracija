@@ -1,1 +1,31 @@
-<p>home works!</p>
+<div class="card">
+  <div class="card-header">Registraciju ssąrašas</div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Vardas</th>
+          <th>Pavardė</th>
+          <th>Gimimo metai</th>
+          <th>Lytis</th>
+          <th>El.pašto adresas</th>
+          <th>Telefonas</th>
+          <th>Klasė</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registration of registrations">
+          <td>{{ registration.name }}</td>
+          <td>{{ registration.surname }}</td>
+          <td>{{ registration.year }}</td>
+          <td>{{ registration.gender }}</td>
+          <td>{{ registration.email }}</td>
+          <td>{{ registration.phone }}</td>
+          <td>{{ registration.class_name }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

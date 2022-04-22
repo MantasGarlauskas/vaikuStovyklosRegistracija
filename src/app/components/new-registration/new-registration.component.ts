@@ -23,6 +23,8 @@ export class NewRegistrationComponent implements OnInit {
       fData.phone,
       fData.class_name
     );
+    console.log(registration);
+
     this.registrationService
       .addRegistration(registration)
       .subscribe((response) => {

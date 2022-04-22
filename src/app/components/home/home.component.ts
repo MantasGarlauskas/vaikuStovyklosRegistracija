@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
+import {Registration} from "src/app/modules/registration";
+import {RegistrationService} from "src/app/service/registration.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  public registrations: Registration[] = [];
+  constructor(private registrationService: RegistrationService) {}
 
   ngOnInit(): void {
+    this.registrationService.getRegistration().subscribe((response) => {
+      this.registrations = response;
+      console.log(this.registrations);
+    });
   }
-
 }
