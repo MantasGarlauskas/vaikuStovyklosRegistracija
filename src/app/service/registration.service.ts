@@ -30,4 +30,7 @@ export class RegistrationService {
         })
       );
   }
+  public deleteRegistration(id: String) {
+    return this.http.delete(this.url + "/registration/" + id + ".json");
+  }
 }
