@@ -1,5 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {NgForm} from "@angular/forms";
+import {Registration} from "src/app/modules/registration";
+import {RegistrationService} from "src/app/service/registration.service";
 
 @Component({
   selector: "app-new-registration",
@@ -7,11 +9,25 @@ import {NgForm} from "@angular/forms";
   styleUrls: ["./new-registration.component.css"],
 })
 export class NewRegistrationComponent implements OnInit {
-  constructor() {}
+  constructor(private registrationService: RegistrationService) {}
 
   ngOnInit(): void {}
   onSubmit(f: NgForm) {
-    console.log(f);
-    console.log("SUBMIT suveike");
+    let fData = f.form.value;
+    let registration = new Registration(
+      fData.name,
+      fData.surname,
+      fData.year,
+      fData.gender,
+      fData.email,
+      fData.phone,
+      fData.class_name
+    );
+    this.registrationService
+      .addRegistration(registration)
+      .subscribe((response) => {
+        console.log("pridetas irasas: ");
+        console.log(response);
+      });
   }
 }

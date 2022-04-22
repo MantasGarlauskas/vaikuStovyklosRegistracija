@@ -7,7 +7,8 @@ import {AppComponent} from "./app.component";
 import {HomeComponent} from "./components/home/home.component";
 import {NavigationComponent} from "./components/navigation/navigation.component";
 import {NewRegistrationComponent} from "./components/new-registration/new-registration.component";
-import { BirthYearValidatorDirective } from './directives/birth-year-validator.directive';
+import {BirthYearValidatorDirective} from "./directives/birth-year-validator.directive";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { BirthYearValidatorDirective } from './directives/birth-year-validator.d
     NewRegistrationComponent,
     BirthYearValidatorDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

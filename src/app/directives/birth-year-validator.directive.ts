@@ -21,7 +21,6 @@ export class BirthYearValidatorDirective implements Validator {
   constructor() {}
   validate(control: FormControl): ValidationErrors | null {
     let age: number = new Date().getFullYear() - control.value;
-    // let childYear: number = control.value;
 
     if (age <= 12 || age >= 18) {
       return {error: "Klaida"};
