@@ -9,6 +9,7 @@ import {NavigationComponent} from "./components/navigation/navigation.component"
 import {NewRegistrationComponent} from "./components/new-registration/new-registration.component";
 import {BirthYearValidatorDirective} from "./directives/birth-year-validator.directive";
 import {HttpClientModule} from "@angular/common/http";
+import { UpdateRegistrationComponent } from './components/update-registration/update-registration.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {HttpClientModule} from "@angular/common/http";
     NavigationComponent,
     NewRegistrationComponent,
     BirthYearValidatorDirective,
+    UpdateRegistrationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

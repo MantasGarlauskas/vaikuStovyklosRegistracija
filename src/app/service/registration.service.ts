@@ -33,4 +33,22 @@ export class RegistrationService {
   public deleteRegistration(id: String) {
     return this.http.delete(this.url + "/registration/" + id + ".json");
   }
+
+  public getRegistrationUpdate(id: String) {
+    return this.http
+      .get<Registration>(this.url + "/registration/" + id + ".json")
+      .pipe(
+        map((response) => {
+          response.id = id;
+          return response;
+        })
+      );
+  }
+
+  public updateRegistration(registration: Registration) {
+    return this.http.patch(
+      this.url + "/registration/" + registration.id + ".json",
+      registration
+    );
+  }
 }

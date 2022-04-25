@@ -24,8 +24,12 @@
           <td>{{ registration.phone }}</td>
           <td>{{ registration.class_name }}</td>
           <td>
-            <button
-              class="btn btn-primary"
+            <a
+              [routerLink]="['/update', registration.id]"
+              class="btn btn-success"
+              >Redaguoti</a
+            >&nbsp;<button
+              class="btn btn-danger"
               (click)="deleteRegistration(registration.id)"
             >
               Trinti
