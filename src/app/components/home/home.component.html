@@ -1,5 +1,10 @@
 <div class="card">
-  <div class="card-header">Registraciju sąrašas</div>
+  <div class="card-header">
+    <div class="float-start">Registraciju sąrašas</div>
+    <div class="float-end" *ngIf="isLoggedIn">
+      Vartotojas: {{ user?.email }}
+    </div>
+  </div>
   <div class="card-body">
     <table class="table">
       <thead>
@@ -41,12 +46,12 @@
       </tbody>
     </table>
     <div *ngIf="!isLoggedIn">
-      Norėdami redaguoti ar ištrinti įrašus, turite
-      <a routerLink="/login">prisijungti</a>
+      <button class="btn btn-success" routerLink="/login">Prisijungti</button>
+      <!-- Norėdami redaguoti ar ištrinti įrašus, turite
+      <a routerLink="/login">prisijungti</a> -->
     </div>
     <div *ngIf="isLoggedIn">
-      Jūs esate prisijungę kaip: {{ user?.email }}
-      <a class="btn btn-primary" (click)="onLogout()">Atsijungti</a>
+      <button class="btn btn-success" (click)="onLogout()">Atsijungti</button>
     </div>
   </div>
 </div>
