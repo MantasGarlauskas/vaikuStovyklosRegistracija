@@ -10,6 +10,7 @@ import {NewRegistrationComponent} from "./components/new-registration/new-regist
 import {BirthYearValidatorDirective} from "./directives/birth-year-validator.directive";
 import {HttpClientModule} from "@angular/common/http";
 import { UpdateRegistrationComponent } from './components/update-registration/update-registration.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { UpdateRegistrationComponent } from './components/update-registration/up
     NewRegistrationComponent,
     BirthYearValidatorDirective,
     UpdateRegistrationComponent,
+    AuthComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
