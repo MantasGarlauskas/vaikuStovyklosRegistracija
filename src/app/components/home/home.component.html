@@ -47,8 +47,6 @@
     </table>
     <div *ngIf="!isLoggedIn">
       <button class="btn btn-success" routerLink="/login">Prisijungti</button>
-      <!-- Norėdami redaguoti ar ištrinti įrašus, turite
-      <a routerLink="/login">prisijungti</a> -->
     </div>
     <div *ngIf="isLoggedIn">
       <button class="btn btn-success" (click)="onLogout()">Atsijungti</button>
