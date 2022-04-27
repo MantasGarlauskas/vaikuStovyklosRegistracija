@@ -24,19 +24,29 @@
           <td>{{ registration.phone }}</td>
           <td>{{ registration.class_name }}</td>
           <td>
-            <a
-              [routerLink]="['/update', registration.id]"
-              class="btn btn-success btn-sm"
-              >Redaguoti</a
-            >&nbsp;<button
-              class="btn btn-danger btn-sm"
-              (click)="deleteRegistration(registration.id)"
-            >
-              Trinti
-            </button>
+            <div *ngIf="isLoggedIn">
+              <a
+                [routerLink]="['/update', registration.id]"
+                class="btn btn-success btn-sm"
+                >Redaguoti</a
+              >&nbsp;<button
+                class="btn btn-danger btn-sm"
+                (click)="deleteRegistration(registration.id)"
+              >
+                Trinti
+              </button>
+            </div>
           </td>
         </tr>
       </tbody>
     </table>
+    <div *ngIf="!isLoggedIn">
+      Norėdami redaguoti ar ištrinti įrašus, turite
+      <a routerLink="/login">prisijungti</a>
+    </div>
+    <div *ngIf="isLoggedIn">
+      Jūs esate prisijungę kaip: {{ user?.email }}
+      <a class="btn btn-primary" (click)="onLogout()">Atsijungti</a>
+    </div>
   </div>
 </div>
