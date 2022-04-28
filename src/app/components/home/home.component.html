@@ -45,11 +45,5 @@
         </tr>
       </tbody>
     </table>
-    <div *ngIf="!isLoggedIn">
-      <button class="btn btn-success" routerLink="/login">Prisijungti</button>
-    </div>
-    <div *ngIf="isLoggedIn">
-      <button class="btn btn-success" (click)="onLogout()">Atsijungti</button>
-    </div>
   </div>
 </div>

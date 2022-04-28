@@ -11,6 +11,8 @@ import {BirthYearValidatorDirective} from "./directives/birth-year-validator.dir
 import {HttpClientModule} from "@angular/common/http";
 import { UpdateRegistrationComponent } from './components/update-registration/update-registration.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AuthComponent } from './components/auth/auth.component';
     BirthYearValidatorDirective,
     UpdateRegistrationComponent,
     AuthComponent,
+    FooterComponent,
+    ChangePasswordComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

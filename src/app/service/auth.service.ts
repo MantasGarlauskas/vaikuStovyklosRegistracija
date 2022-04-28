@@ -1,6 +1,7 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {tap} from "rxjs/operators";
+import {EventEmitter} from "@angular/core";
 import {AuthResponseData} from "../modules/authResponseData";
 
 @Injectable({
@@ -9,40 +10,61 @@ import {AuthResponseData} from "../modules/authResponseData";
 export class AuthService {
   public isLoggedIn = false;
   public user?: AuthResponseData;
+  private key = "AIzaSyD9l7beca5BGTAkwMfKFbrvYJervqU6AZQ";
+  public userUpdated = new EventEmitter();
 
   constructor(private http: HttpClient) {}
 
-  public register(email: String, password: String) {
+  private authAPICall(url: string, email: String, password: String) {
     return this.http
-      .post<AuthResponseData>(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD9l7beca5BGTAkwMfKFbrvYJervqU6AZQ",
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true,
-        }
-      )
+      .post<AuthResponseData>(url, {
+        email: email,
+        password: password,
+        returnSecureToken: true,
+      })
       .pipe(
-        tap((response) => {
+        tap((respose) => {
           this.isLoggedIn = true;
-          this.user = response;
+          this.user = respose;
+          this.userUpdated.emit();
         })
       );
   }
+
+  public register(email: String, password: String) {
+    return this.authAPICall(
+      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" +
+        this.key,
+      email,
+      password
+    );
+  }
+
   public login(email: String, password: String) {
+    return this.authAPICall(
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+        this.key,
+      email,
+      password
+    );
+  }
+
+  public changePass(password: String) {
     return this.http
       .post<AuthResponseData>(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD9l7beca5BGTAkwMfKFbrvYJervqU6AZQ",
+        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=" +
+          this.key,
         {
-          email: email,
+          idToken: this.user?.idToken,
           password: password,
           returnSecureToken: true,
         }
       )
       .pipe(
-        tap((response) => {
+        tap((respose) => {
           this.isLoggedIn = true;
-          this.user = response;
+          this.user = respose;
+          this.userUpdated.emit();
         })
       );
   }
@@ -50,5 +72,6 @@ export class AuthService {
   public logout() {
     this.isLoggedIn = false;
     this.user = undefined;
+    this.userUpdated.emit();
   }
 }
