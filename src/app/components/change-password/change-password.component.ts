@@ -11,6 +11,8 @@ import {AuthService} from "src/app/service/auth.service";
 })
 export class ChangePasswordComponent implements OnInit {
   public user?: AuthResponseData;
+  public isLoginMode = true;
+  public authSuccess?: Boolean;
 
   constructor(private auth: AuthService, private router: Router) {}
 
@@ -19,6 +21,7 @@ export class ChangePasswordComponent implements OnInit {
       this.router.navigate(["/"]);
     }
     this.user = this.auth.user;
+    this.isLoginMode = this.auth.isLoggedIn;
   }
 
   public onSubmit(form: NgForm) {
