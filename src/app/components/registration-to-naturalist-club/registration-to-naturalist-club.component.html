@@ -50,6 +50,25 @@
           >Klasė yra privaloma ir turi būti nuo 6 iki 12</span
         >
       </div>
+      <hr />
+      <h4>Alergijos</h4>
+      <button type="button" class="btn btn-success" (click)="addAlergy()">
+        Pridėti alergijas
+      </button>
+      <div formArrayName="alergijos">
+        <div class="mb-3 mt-3" *ngFor="let alergija of alergies; let i = index">
+          <input type="text" class="form-control" [formControlName]="i" />
+        </div>
+      </div>
+      <button
+        type="button"
+        class="btn btn-danger btn-sm mt-3"
+        (click)="deleteAlergy()"
+      >
+        Trinti alergija
+      </button>
+
+      <hr />
       <button
         class="btn btn-success"
         type="submit"
