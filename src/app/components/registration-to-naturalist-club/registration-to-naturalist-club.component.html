@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header">Registracija į Gamtyininkų būrelį</div>
+  <div class="card-body">
+    <form [formGroup]="naturalistClubForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label">Vardas: </label>
+        <input type="text" formControlName="name" class="form-control" />
+        <span
+          class="help-block"
+          *ngIf="
+            !naturalistClubForm.get('name')?.valid &&
+            naturalistClubForm.get('name')?.touched
+          "
+          >Vardas yra privalomas ir turi būti nuo 3 iki 16 simboliu</span
+        >
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Pavardė: </label>
+        <input type="text" formControlName="surname" class="form-control" />
+        <span
+          class="help-block"
+          *ngIf="
+            !naturalistClubForm.get('surname')?.valid &&
+            naturalistClubForm.get('surname')?.touched
+          "
+          >Pavardė yra privaloma ir turi būti nuo 3 iki 16 simboliu</span
+        >
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Email: </label>
+        <input type="text" formControlName="email" class="form-control" />
+        <span
+          class="help-block"
+          *ngIf="
+            !naturalistClubForm.get('email')?.valid &&
+            naturalistClubForm.get('email')?.touched
+          "
+          >Email yra privalomas</span
+        >
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Klasė (nuo 6 iki 12): </label>
+        <input type="number" formControlName="klase" class="form-control" />
+        <span
+          class="help-block"
+          *ngIf="
+            !naturalistClubForm.get('klase')?.valid &&
+            naturalistClubForm.get('klase')?.touched
+          "
+          >Klasė yra privaloma ir turi būti nuo 6 iki 12</span
+        >
+      </div>
+      <button
+        class="btn btn-success"
+        type="submit"
+        [disabled]="!naturalistClubForm.valid"
+      >
+        Pridėti
+      </button>
+    </form>
+  </div>
+</div>
