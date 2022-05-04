@@ -1,5 +1,12 @@
 import {Component, OnInit} from "@angular/core";
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
+import {RegistrationService} from "src/app/service/registration.service";
 
 @Component({
   selector: "app-registration-to-naturalist-club",
@@ -9,7 +16,7 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 export class RegistrationToNaturalistClubComponent implements OnInit {
   public naturalistClubForm: FormGroup;
 
-  constructor() {
+  constructor(private registrationService: RegistrationService) {
     this.naturalistClubForm = new FormGroup({
       name: new FormControl(null, [
         Validators.required,
@@ -24,13 +31,19 @@ export class RegistrationToNaturalistClubComponent implements OnInit {
       email: new FormControl(null, [Validators.email, Validators.required]),
       klase: new FormControl(null, [Validators.required, this.checkKlase]),
       alergijos: new FormArray([]),
+      bureliai: new FormArray([]),
     });
   }
 
   ngOnInit(): void {}
 
   onSubmit() {
-    console.log(this.naturalistClubForm.value);
+    this.registrationService
+      .addNaturalistClubForm(this.naturalistClubForm.value)
+      .subscribe((response) => {
+        console.log("duomenys pateikti");
+        console.log(response);
+      });
     this.naturalistClubForm.reset();
   }
 
@@ -50,7 +63,22 @@ export class RegistrationToNaturalistClubComponent implements OnInit {
     (<FormArray>this.naturalistClubForm.get("alergijos")).removeAt(length - 1);
   }
 
+  addBurelis() {
+    const burelis = new FormGroup({
+      year: new FormControl(null, Validators.required),
+      name: new FormControl(null, Validators.required),
+      type: new FormControl(null, Validators.required),
+    });
+    (<FormArray>this.naturalistClubForm.get("bureliai")).push(burelis);
+  }
+  get getBureliai() {
+    return (<FormArray>this.naturalistClubForm.get("bureliai")).controls;
+  }
+
   get alergies() {
     return (<FormArray>this.naturalistClubForm.get("alergijos")).controls;
+  }
+  toFormGroup(el: AbstractControl): FormGroup {
+    return <FormGroup>el;
   }
 }

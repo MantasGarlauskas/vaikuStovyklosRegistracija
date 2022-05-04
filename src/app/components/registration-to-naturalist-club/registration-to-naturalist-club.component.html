@@ -67,7 +67,42 @@
       >
         Trinti alergija
       </button>
-
+      <hr />
+      <h4>Būreliai</h4>
+      <button type="button" class="btn btn-success" (click)="addBurelis()">
+        Prideti būrelį
+      </button>
+      <div formArrayName="bureliai">
+        <div *ngFor="let burelis of getBureliai; let i = index">
+          <div class="row mt-3 mb-3" [formGroup]="toFormGroup(burelis)">
+            <div class="col-md-4">
+              <label for="" class="form-label">Metai</label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="year"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="" class="form-label">Pavadinimas</label>
+              <input type="text" class="form-control" formControlName="name" />
+            </div>
+            <div class="col-md-4">
+              <label for="" class="form-label">Pavadinimas</label>
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                formControlName="type"
+              >
+                <option value="sporto">Sporto</option>
+                <option value="meno">Meno</option>
+                <option value="mokslo">Mokslo</option>
+              </select>
+              <!-- <input type="text" class="form-control" /> -->
+            </div>
+          </div>
+        </div>
+      </div>
       <hr />
       <button
         class="btn btn-success"

@@ -1,6 +1,7 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {map} from "rxjs/operators";
+import {NaturalistClubForm} from "../modules/naturalistClubForm";
 import {Registration} from "../modules/registration";
 
 @Injectable({
@@ -11,6 +12,7 @@ export class RegistrationService {
     "https://vaikuregistracijaistovykla-default-rtdb.europe-west1.firebasedatabase.app/";
 
   constructor(private http: HttpClient) {}
+
   public addRegistration(registration: Registration) {
     return this.http.post<{name: string}>(
       this.url + "/registration.json",
@@ -48,6 +50,13 @@ export class RegistrationService {
   public updateRegistration(registration: Registration) {
     return this.http.patch(
       this.url + "/registration/" + registration.id + ".json",
+      registration
+    );
+  }
+
+  public addNaturalistClubForm(registration: NaturalistClubForm) {
+    return this.http.post<{name: string}>(
+      this.url + "/naturalistClubRegistration.json",
       registration
     );
   }
